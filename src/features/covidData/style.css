@@ -1,0 +1,46 @@
+
+tbody tr:nth-child(odd) {
+background-color: #9cf3f3;
+}
+
+tbody tr:nth-child(even) {
+
+    background-color: #0bbd79;
+
+  }
+
+  tr:hover td{
+    cursor: pointer;
+    background-color: #ebc20b;
+
+  }
+
+thead{
+    background-color: #faefbf;
+}
+
+
+.myBtn {
+  background-color: #e7881a;
+}
+
+th, td {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+table { width: auto; }
+
+.redText {
+  color: red;
+}
+.autoTextColor {
+  color: auto;
+}
+
+.bgBlack {
+  background-color: black;
+}
+
+.hidden {
+  display: none;
+}

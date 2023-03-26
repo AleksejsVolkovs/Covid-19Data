@@ -1,0 +1,54 @@
+.navigationButtons {
+  width: 100%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding-top: 40px;
+}
+ 
+.navigationButtons a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid red;
+  color: red;
+  cursor: pointer;
+}
+ 
+.navigationButtons a:hover {
+  color: white;
+  background-color: red;
+}
+ 
+.navigationActive a {
+  color: white;
+  background-color: red;
+}
+ 
+.navigationDisabled a {
+  color: grey;
+  background-color: grey;
+}
+
+
+
+
+.tab-list {
+    border-bottom: 1px solid #ccc;
+    padding-left: 0;
+  }
+  
+  .tab-list-item {
+    display: inline-block;
+    list-style: none;
+    margin-bottom: -1px;
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .tab-list-active {
+    background-color: white;
+    border: solid #ccc;
+    border-width: 1px 1px 0 1px;
+  }
