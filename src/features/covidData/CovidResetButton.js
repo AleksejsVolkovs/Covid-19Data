@@ -12,57 +12,57 @@ let CovidResetButton = () => {
 
     let dispatch = useDispatch()
 
-// Method that resets the filter values ​​by countries and columns and by pages
+    // Method that resets the filter values ​​by countries and columns and by pages
     let handleReset = () => {
-    dispatch(countryUpdated('Все страны'))
-    dispatch(covidDataPerPageUpdated(20))
-    dispatch(pageUpdated(0)) 
-    dispatch(totalPagesUpdated(0))
-dispatch(columnUpdated(''))
-dispatch(columnValueFromUpdated(''))
+        dispatch(countryUpdated('Все страны'))
+        dispatch(covidDataPerPageUpdated(20))
+        dispatch(pageUpdated(0))
+        dispatch(totalPagesUpdated(0))
+        dispatch(columnUpdated(''))
+        dispatch(columnValueFromUpdated(''))
         dispatch(columnValueToUpdated(''))
-        }
+    }
 
-// Method that resets the values ​​of the variables for the date pickers
-        let handleDefault = () => {
-    dispatch(startDateUpdated([null, null]))
-    dispatch(finishDateUpdated([null, null]))
+    // Method that resets the values ​​of the variables for the date pickers
+    let handleDefault = () => {
+        dispatch(startDateUpdated([null, null]))
+        dispatch(finishDateUpdated([null, null]))
     }
 
     // Variables and a condition for hiding the button, when changing the tab to a chart
     let defaultClassName = 'row '
-let setClassName = defaultClassName
-if (hidden === 'hidden') {
-      setClassName = ''
-      defaultClassName += 'hidden'
-      setClassName = defaultClassName
-      } else {
-          setClassName = ''
-          setClassName = defaultClassName
-      }
-      
-    if ((String(startDate).split('/').reverse().join('') !== String(firstDate).split('/').reverse().join('') || String(finishDate).split('/').reverse().join('') !== String(lastDate).split('/').reverse().join('')) && (startDate !== null || finishDate !== null)) {
-return (
-        <div className={setClassName}>
-        <div className="col-lg-6 col-md-6 col-sm-12">
-    <input type="button" value="Сбросить фильтры" title="Сбросить фильтры" onClick={handleReset} className="btn btn-primary w-50 m-3 myBtn"/>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-12">
-    <input type="button" value="Отобразить все данные" title="Отобразить все данные" onClick={handleDefault} className="btn btn-primary w-50 m-3 myBtn"/>
-    </div>
-    </div>
-    )
+    let setClassName = defaultClassName
+    if (hidden === 'hidden') {
+        setClassName = ''
+        defaultClassName += 'hidden'
+        setClassName = defaultClassName
     } else {
-    return (
-        <div className={setClassName}>
-        <div className="col-lg-6 col-md-6 col-sm-12">
-    <input type="button" value="Сбросить фильтры" title="Сбросить фильтры" onClick={handleReset} className=" btn btn-primary w-50 m-3 myBtn"/>
-    </div>
-    <div className="col-lg-6 col-md-6 col-sm-12">
-    </div>
-    </div>
-    )
-}
+        setClassName = ''
+        setClassName = defaultClassName
+    }
+
+    if ((String(startDate).split('/').reverse().join('') !== String(firstDate).split('/').reverse().join('') || String(finishDate).split('/').reverse().join('') !== String(lastDate).split('/').reverse().join('')) && (startDate !== null || finishDate !== null)) {
+        return (
+            <div className={setClassName}>
+                <div className="col-lg-6 col-md-6 col-sm-12">
+                    <input type="button" value="Сбросить фильтры" title="Сбросить фильтры" onClick={handleReset} className="btn btn-primary w-50 m-3 myBtn" />
+                </div>
+                <div className="col-lg-6 col-md-6 col-sm-12">
+                    <input type="button" value="Отобразить все данные" title="Отобразить все данные" onClick={handleDefault} className="btn btn-primary w-50 m-3 myBtn" />
+                </div>
+            </div>
+        )
+    } else {
+        return (
+            <div className={setClassName}>
+                <div className="col-lg-6 col-md-6 col-sm-12">
+                    <input type="button" value="Сбросить фильтры" title="Сбросить фильтры" onClick={handleReset} className=" btn btn-primary w-50 m-3 myBtn" />
+                </div>
+                <div className="col-lg-6 col-md-6 col-sm-12">
+                </div>
+            </div>
+        )
+    }
 
 }
 

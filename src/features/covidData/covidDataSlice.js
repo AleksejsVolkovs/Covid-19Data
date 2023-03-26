@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 // Object containing variable values
 let initialState = {
-records: [],
+  records: [],
   loading: false,
   countries: [],
   country: 'Все страны',
@@ -20,17 +20,17 @@ records: [],
   columnValueFrom: '',
   columnValueTo: '',
   hidden: '',
-  }
+}
 
 // Method for getting data by URL
-  export const getCovidData = createAsyncThunk(
+export const getCovidData = createAsyncThunk(
   'covidData/getCovidData',
   async (thunkAPI) => {
     const res = await fetch('https://opendata.ecdc.europa.eu/covid19/casedistribution/json/').then(
-    (data) => data.json()
-  )
-  return res.records
-})
+      (data) => data.json()
+    )
+    return res.records
+  })
 
 // Contains Methods for changing or setting values ​​in storage
 const covidDataSlice = createSlice({
@@ -38,8 +38,8 @@ const covidDataSlice = createSlice({
   initialState,
   reducers: {
     countriesSet(state, action) {
-state.countries = action.payload
-},
+      state.countries = action.payload
+    },
     countryUpdated(state, action) {
       state.country = action.payload
     },
@@ -77,7 +77,7 @@ state.countries = action.payload
     columnValueFromUpdated(state, action) {
       state.columnValueFrom = action.payload
     },
-columnValueToUpdated(state, action) {
+    columnValueToUpdated(state, action) {
       state.columnValueTo = action.payload
     },
     hiddenUpdated(state, action) {
@@ -85,19 +85,19 @@ columnValueToUpdated(state, action) {
     },
 
   },
-    extraReducers: (builder) => {
-   builder
-    .addCase(getCovidData.pending, (state) => {
-      state.loading = true
-    })
-    .addCase(getCovidData.fulfilled, (state, { payload }) => {
-      state.loading = false
-      state.records = payload
-    })
-    .addCase(getCovidData.rejected, (state) => {
-      state.loading = false
-    })
-    }
+  extraReducers: (builder) => {
+    builder
+      .addCase(getCovidData.pending, (state) => {
+        state.loading = true
+      })
+      .addCase(getCovidData.fulfilled, (state, { payload }) => {
+        state.loading = false
+        state.records = payload
+      })
+      .addCase(getCovidData.rejected, (state) => {
+        state.loading = false
+      })
+  }
 })
 
 // Export methods for use in the components

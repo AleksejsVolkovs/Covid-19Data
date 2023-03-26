@@ -7,7 +7,7 @@ import './App.css';
 import { getCovidData, hiddenUpdated } from './features/covidData/covidDataSlice'
 import CovidCountriesFilter from './features/covidData/CovidCountriesFilter'
 import CovidColumnFilter from './features/covidData/CovidColumnFilter'
-import CovidFirstDate from  './features/covidData/CovidFirstDate'
+import CovidFirstDate from './features/covidData/CovidFirstDate'
 import CovidLastDate from './features/covidData/CovidLastDate'
 import CovidStartDate from './features/covidData/CovidStartDate'
 import CovidFinishDate from './features/covidData/CovidFinishDate'
@@ -21,55 +21,55 @@ import CovidPagesNumberSelect from './features/covidData/CovidPagesNumberSelect'
 function App() {
   // State for to hiding filters, date pickers, buttons, paginate , when change tab to chart
   let [hidden, setHidden] = useState('')
-const dispatch = useDispatch()
-  
-// Calling the method that sets the general data to the redux  storage variable
+  const dispatch = useDispatch()
+
+  // Calling the method that sets the general data to the redux  storage variable
   useEffect(() => {
     dispatch(getCovidData())
-    }, [])
-    
-// Getting value of variable from redux storage
-    const { loading } = useSelector((state) => state.covidData)
-if (loading) return <p>Loading...</p>
+  }, [])
 
-// Method that sets the value of a variable in redux storage when switching to the chart tab
-let handleHidden = () => {
-  dispatch(hiddenUpdated('hidden'))
-}
+  // Getting value of variable from redux storage
+  const { loading } = useSelector((state) => state.covidData)
+  if (loading) return <p>Loading...</p>
 
-// Method that sets the value of a variable in redux storage when switching to the table tab
-let handleUnhidden = () => {
-  dispatch(hiddenUpdated(''))
-}
+  // Method that sets the value of a variable in redux storage when switching to the chart tab
+  let handleHidden = () => {
+    dispatch(hiddenUpdated('hidden'))
+  }
 
-return (
+  // Method that sets the value of a variable in redux storage when switching to the table tab
+  let handleUnhidden = () => {
+    dispatch(hiddenUpdated(''))
+  }
+
+  return (
     <div className="App container">
       <header className="app-header row">
-      <p className="text-center">От <CovidFirstDate/> до <CovidLastDate/> </p>
+        <p className="text-center">От <CovidFirstDate /> до <CovidLastDate /> </p>
       </header>
       <div className="row">
-      <CovidCountriesFilter/>
-<CovidColumnFilter/>
-<CovidStartDate/>
-      <CovidFinishDate/>
-</div>
-      <CovidResetButton/>
-<main className="container">
-<Tabs>
-    <TabList>
-<Tab onClick={handleUnhidden}>Таблица данных</Tab>
-<Tab onClick={handleHidden}>График данных</Tab>
-</TabList>
-            <TabPanel>
-        <CovidDataTable/>
-        </TabPanel>
-        <TabPanel>
-            <CovidDataGraphic/>
-            </TabPanel>
+        <CovidCountriesFilter />
+        <CovidColumnFilter />
+        <CovidStartDate />
+        <CovidFinishDate />
+      </div>
+      <CovidResetButton />
+      <main className="container">
+        <Tabs>
+          <TabList>
+            <Tab onClick={handleUnhidden}>Таблица данных</Tab>
+            <Tab onClick={handleHidden}>График данных</Tab>
+          </TabList>
+          <TabPanel>
+            <CovidDataTable />
+          </TabPanel>
+          <TabPanel>
+            <CovidDataGraphic />
+          </TabPanel>
         </Tabs>
-        <CovidPagesNumberSelect/>
-<CovidPaginate/>
-</main>
+        <CovidPagesNumberSelect />
+        <CovidPaginate />
+      </main>
     </div>
   )
 }
